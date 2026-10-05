@@ -1,6 +1,8 @@
 # Board specific SELinux policy variable definitions
-LOCAL_PATH := $(call my-dir)
-SEPOLICY_PATH := $(LOCAL_PATH)
+# Note: SEPolicy.mk is included during BoardConfig / Product Configuration time
+# where $(call my-dir) is undefined and returns empty. Statically bind to device/qcom/sepolicy-legacy-um.
+SEPOLICY_PATH := device/qcom/sepolicy-legacy-um
+LOCAL_PATH := $(SEPOLICY_PATH)
 BOARD_SYSTEM_EXT_SEPOLICY_PREBUILT_DIRS := $(SEPOLICY_PATH)/generic
 BOARD_PRODUCT_SEPOLICY_PREBUILT_DIRS := $(SEPOLICY_PATH)/generic/product
 BOARD_PLAT_PUB_VERSIONED_POLICY := $(SEPOLICY_PATH)
